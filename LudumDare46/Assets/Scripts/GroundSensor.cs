@@ -37,7 +37,7 @@ public class GroundSensor : MonoBehaviour
         return allGroundsStatus.Any(c => c.Value);
     }
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         var gameObject = other.gameObject;
         if (gameObject.layer == LayerMask.NameToLayer("Ground"))

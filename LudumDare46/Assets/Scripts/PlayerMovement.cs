@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float speed = 3.0f;
     [SerializeField]
-    private float gravity = -19.62f;
+    private float gravity = -9.81f; //-19.62f;
     [SerializeField]
     private float jumpHeight = 1f;
     [SerializeField]
@@ -39,8 +39,8 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = -2f;
         }
 
-        float xMoveInput = Input.GetAxis("Horizontal");
-        Move(xMoveInput);
+        //float xMoveInput = Input.GetAxis("Horizontal");
+        //Move(xMoveInput);
 
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
