@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
+    GameObject target = null;
+
+    ParticleSystem particleSystem = null;
+
+    private void Awake()
+    {
+        particleSystem = GetComponentInChildren<ParticleSystem>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,13 +33,23 @@ public class Gun : MonoBehaviour
         // Does the ray intersect any objects excluding the player layer
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right), out hit, Mathf.Infinity, layerMask))
         {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.right) * hit.distance, Color.yellow);
+            target = hit.collider.gameObject;
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.right) * hit.distance, Color.green);
             Debug.Log("Did Hit");
         }
         else
         {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.right) * 1000, Color.white);
-            Debug.Log("Did not Hit");
+            target = null;
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.right) * 1000, Color.red);
+        }
+    }
+
+    public void Shoot()
+    {
+        particleSystem.Play();
+        if (target != null)
+        {
+            Destroy(target);
         }
     }
 }

@@ -2,15 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField]
-    private float speed = 3.0f;
-    [SerializeField]
+    private float speed = 6.0f;
     private float gravity = -9.81f; //-19.62f;
-    [SerializeField]
-    private float jumpHeight = 1f;
-    [SerializeField]
     private bool isGrounded = false;
 
     GroundSensor groundSensor;
@@ -22,11 +17,11 @@ public class PlayerMovement : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         if (controller == null)
-            throw new System.Exception("Player Movement - Need CharacterController");
+            throw new System.Exception("Enemy Movement - Need CharacterController");
 
         groundSensor = GetComponentInChildren<GroundSensor>();
         if (groundSensor == null)
-            throw new System.Exception("Player Movement - Need GroundSensor");
+            throw new System.Exception("Enemy Movement - Need GroundSensor");
     }
 
     // Update is called once per frame
@@ -39,18 +34,18 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = -2f;
         }
 
+        Move(-1.0f);
+
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
-
-        if (Input.GetButtonDown("Jump") && isGrounded)
-        {
-            Jump();
-        }
     }
 
-    void Jump()
+    void Move(float xMoveInput)
     {
-        velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-        controller.Move(velocity * Time.deltaTime);
+        if (xMoveInput != 0)
+        {
+            Vector2 move = new Vector2(xMoveInput, 0.0f);
+            controller.Move(move * speed * Time.deltaTime);
+        }
     }
 }
