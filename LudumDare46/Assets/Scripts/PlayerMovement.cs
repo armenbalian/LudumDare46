@@ -5,12 +5,16 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
-    private float speed = 3.0f;
+    private float defaultSpeed = 3.0f;
+
+    private float speed;
+
     [SerializeField]
     private float gravity = -9.81f; //-19.62f;
+
     [SerializeField]
     private float jumpHeight = 1f;
-    [SerializeField]
+
     private bool isGrounded = false;
 
     GroundSensor groundSensor;
@@ -20,6 +24,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
+        speed = defaultSpeed;
+
         controller = GetComponent<CharacterController>();
         if (controller == null)
             throw new System.Exception("Player Movement - Need CharacterController");
@@ -42,9 +48,33 @@ public class PlayerMovement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
+
+        if (Input.GetButtonDown("Fire2"))
+        {
+            print("Slow");
+            speed = defaultSpeed / 2;
+        }
+        
+        if(Input.GetButtonUp("Fire2"))
+        {
+            speed = defaultSpeed;
+        }
+
+        Move(1.0f);
+        
+
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             Jump();
+        }
+    }
+
+    void Move(float xMoveInput)
+    {
+        if (xMoveInput != 0)
+        {
+            Vector2 move = new Vector2(xMoveInput, 0.0f);
+            controller.Move(move * speed * Time.deltaTime);
         }
     }
 

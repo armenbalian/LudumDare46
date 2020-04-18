@@ -5,11 +5,16 @@ using UnityEngine;
 
 public class GroundSensor : MonoBehaviour
 {
-    MeshRenderer meshRenderer;
+    MeshRenderer meshRenderer; 
 
     Dictionary<string, bool> allGroundsStatus;
 
     private void Awake()
+    {
+        RefreshGroundStatusCache();
+    }
+
+    public void RefreshGroundStatusCache()
     {
         allGroundsStatus = new Dictionary<string, bool>();
         var grounds = FindObjectsOfType<GameObject>().Where(g => g.layer == LayerMask.NameToLayer("Ground"));
@@ -29,7 +34,7 @@ public class GroundSensor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
 
     public bool GetIsTouchingGround()
@@ -42,6 +47,7 @@ public class GroundSensor : MonoBehaviour
         var gameObject = other.gameObject;
         if (gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
+            print(gameObject.name);
             allGroundsStatus[gameObject.name] = true;
         }
     }

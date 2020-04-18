@@ -21,7 +21,7 @@ public class RailObjects : MonoBehaviour
     {
         if (GameObjectsToSpawn.Count > 0)
         {
-            Instantiate(GameObjectsToSpawn[0], spawnPoint.transform.position, Quaternion.identity);
+            StartCoroutine(WaitAndSpawn(2.0f));
         }
     }
 
@@ -29,5 +29,15 @@ public class RailObjects : MonoBehaviour
     void Update()
     {
         
+    }
+
+    // every 2 seconds perform the print()
+    private IEnumerator WaitAndSpawn(float waitTime)
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(waitTime);
+            Instantiate(GameObjectsToSpawn[0], spawnPoint.transform.position, Quaternion.identity);
+        }
     }
 }

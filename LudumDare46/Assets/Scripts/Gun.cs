@@ -4,52 +4,67 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
-    GameObject target = null;
+    [SerializeField]
+    bool debug = false;
 
-    ParticleSystem particleSystem = null;
+
+    GameObject target = null;
+    Vector3 lastHitPoint;
+
+    AudioSource audioSource;
+    ParticleSystem particleSystem;
+
 
     private void Awake()
     {
         particleSystem = GetComponentInChildren<ParticleSystem>();
+        if (!particleSystem)
+            throw new System.Exception("Gun - Need Particle System");
+
+        audioSource = GetComponent<AudioSource>();
+        if(!audioSource)
+            throw new System.Exception("Gun - Need Audio Source");
+
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         // Bit shift the index of the layer (8) to get a bit mask
-        int layerMask = 1 << 8;
-
-        // This would cast rays only against colliders in layer 8.
-        // But instead we want to collide against everything except layer 8. The ~ operator does this, it inverts a bitmask.
-        layerMask = ~layerMask;
+        int layerMask = LayerMask.GetMask("Enemy");
 
         RaycastHit hit;
         // Does the ray intersect any objects excluding the player layer
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right), out hit, Mathf.Infinity, layerMask))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right), out hit, /*Mathf.Infinity*/ 100, layerMask))
         {
             target = hit.collider.gameObject;
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.right) * hit.distance, Color.green);
-            Debug.Log("Did Hit");
+            lastHitPoint = hit.point;
+            if (debug)
+            {
+                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.right) * hit.distance, Color.green);
+            }
         }
         else
         {
             target = null;
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.right) * 1000, Color.red);
+            if (debug)
+            {
+                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.right) * 1000, Color.red);
+            }
         }
     }
 
     public void Shoot()
     {
         particleSystem.Play();
-        if (target != null)
+        audioSource.Play();
+        if (target)
         {
-            Destroy(target);
+            var healthSystem = target.GetComponent<Health>();
+
+            if (healthSystem)
+            {
+                healthSystem.TakeDamage(20, lastHitPoint);
+            }
         }
     }
 }

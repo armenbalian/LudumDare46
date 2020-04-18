@@ -127,10 +127,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c45c680c9d570a49b8e1c81a9235abb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  defaultSpeed: 10
   gravity: -100
   jumpHeight: 6
-  isGrounded: 0
 --- !u!114 &3564858841668411348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,6 +209,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5421426932345255684, guid: 8333954fb198c62448034d2ffcf89c19,
+        type: 3}
+      propertyPath: debug
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6088900468763628726, guid: 8333954fb198c62448034d2ffcf89c19,
         type: 3}
       propertyPath: m_Name
@@ -238,7 +242,7 @@ PrefabInstance:
     - target: {fileID: 1713312897263731060, guid: 91a6264916eeca843af5df8638ef1d86,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.505
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1713312897263731060, guid: 91a6264916eeca843af5df8638ef1d86,
         type: 3}
@@ -288,7 +292,7 @@ PrefabInstance:
     - target: {fileID: 1713312897263731060, guid: 91a6264916eeca843af5df8638ef1d86,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.01
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 3042849571127375890, guid: 91a6264916eeca843af5df8638ef1d86,
         type: 3}
