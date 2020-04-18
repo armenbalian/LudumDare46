@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c45c680c9d570a49b8e1c81a9235abb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isRunning: 1
   defaultSpeed: 10
   gravity: -100
   jumpHeight: 6
@@ -142,6 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32a4632ba86c8134ea14440ca8b2e182, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectToThrow: {fileID: 0}
 --- !u!1001 &812374504664617777
 PrefabInstance:
   m_ObjectHideFlags: 0

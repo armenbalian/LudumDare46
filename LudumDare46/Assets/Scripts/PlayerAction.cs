@@ -6,17 +6,23 @@ public class PlayerAction : MonoBehaviour
 {
     Gun gun;
 
+    ObjectThrow objectThrow; 
+
     private void Awake()
     {
         gun = GetComponentInChildren<Gun>();
         if (gun == null)
             throw new System.Exception("Player Action - Need Gun !");
+
+        objectThrow = FindObjectOfType<ObjectThrow>();
+        if (objectThrow == null)
+            throw new System.Exception("Player Action - Need Object Throw !");
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+  
     }
 
     // Update is called once per frame
@@ -25,6 +31,11 @@ public class PlayerAction : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             gun.Shoot();
+        }
+
+        if (Input.GetButtonDown("Fire2"))
+        {
+            objectThrow.Launch();
         }
     }
 }

@@ -34,7 +34,7 @@ public class Gun : MonoBehaviour
 
         RaycastHit hit;
         // Does the ray intersect any objects excluding the player layer
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right), out hit, /*Mathf.Infinity*/ 100, layerMask))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right), out hit, /*Mathf.Infinity*/ 35, layerMask))
         {
             target = hit.collider.gameObject;
             lastHitPoint = hit.point;
@@ -48,7 +48,7 @@ public class Gun : MonoBehaviour
             target = null;
             if (debug)
             {
-                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.right) * 1000, Color.red);
+                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.right) * 35, Color.red);
             }
         }
     }

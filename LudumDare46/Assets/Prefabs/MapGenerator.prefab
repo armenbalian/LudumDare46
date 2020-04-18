@@ -43,6 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f614fa401f51d554d8b35c73a07d1e1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FloorPossibility:
+  floorPossibilityPrefab:
   - {fileID: 8702841916188388814, guid: 835a04d298cabef45acd05a573f64451, type: 3}
   - {fileID: 124063453606673350, guid: 7bb84ffba8eade9459f8aadbbd8098f5, type: 3}
+  enemyPrefab: {fileID: 7543159832423105169, guid: 15cfe8ae7c7fb6245a5ece56dd21e553,
+    type: 3}

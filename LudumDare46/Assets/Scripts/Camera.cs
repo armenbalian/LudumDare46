@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class Camera : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    Transform target;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    Vector3 offset;
+
+    [SerializeField]
+    private float smoothSpeed = 0.125f;
+
+    void Awake()
+    {        
+        offset = transform.position - target.position;        
     }
+    
+    void LateUpdate()
+    {
+        transform.position = new Vector3(target.position.x + offset.x, transform.position.y, transform.position.z);        
+    }   
 }

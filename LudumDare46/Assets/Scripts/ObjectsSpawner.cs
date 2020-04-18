@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RailObjects : MonoBehaviour
+public class ObjectsSpawner : MonoBehaviour
 {
     [SerializeField]
     List<GameObject> GameObjectsToSpawn = new List<GameObject>();

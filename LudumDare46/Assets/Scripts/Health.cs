@@ -104,7 +104,19 @@ public class Health : MonoBehaviour
             {
                 renderer.enabled = false;
             }
-        }         
+        }
+
+        var boxCollider = GetComponent<BoxCollider>();
+        if (boxCollider)
+        {
+            boxCollider.enabled = false;
+        }
+
+        var characterController = GetComponent<CharacterController>();
+        if (characterController)
+        {
+            characterController.enabled = false;
+        }
     }
 
     bool IsDead()
