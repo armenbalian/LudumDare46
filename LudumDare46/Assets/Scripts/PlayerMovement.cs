@@ -44,6 +44,25 @@ public class PlayerMovement : MonoBehaviour
             throw new System.Exception("Player Movement - Need GroundSensor");
     }
 
+    void Start()
+    {
+        /*
+        var animator = GetComponent<Animator>();
+        if (animator != null)
+        {
+            animator.enabled = false;
+        }
+        else
+        {
+            var animators = GetComponentsInChildren<Animator>();
+            foreach (var anim in animators)
+            {
+                anim.enabled = false;
+            }
+        }
+        */
+    }
+
     // Update is called once per frame
     void Update()
     {

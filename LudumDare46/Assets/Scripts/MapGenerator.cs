@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -57,20 +58,29 @@ public class MapGenerator : MonoBehaviour
                 floorLenght++;
             }
 
-            /*
+            GameObject enemyInstance = null;
             var haveEnemy = Random.Range(0, 15) == 0;
             if(haveEnemy && !isHole && !safeZone)
             {                
                 if (enemyPrefab)
                 {
                     var enemyPos = new Vector3(newPos.x, newPos.y + 10, newPos.z);
-                    Instantiate(enemyPrefab, enemyPos, transform.rotation);
+                    enemyInstance = Instantiate(enemyPrefab, enemyPos, transform.rotation);
                 }                
-            }
-            */
+            }            
 
             gameObject.name = "Floor#" + i;
-            Instantiate(gameObject, newPos, transform.rotation);
+            var newInstance = Instantiate(gameObject, newPos, transform.rotation);
+
+            if (i >= 80)
+            {
+                GameObjectUtils.SetActive(newInstance, false);
+                if (enemyInstance != null)
+                {
+                    GameObjectUtils.SetActive(enemyInstance, false);
+                }
+            }
+
             newPos.x++;
         }
 
