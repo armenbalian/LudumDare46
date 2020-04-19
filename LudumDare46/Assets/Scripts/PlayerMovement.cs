@@ -92,15 +92,15 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetButtonDown("Jump"))
             {
                 groundSensor.resetAllStatus();
+                speed = defaultSpeed;
                 animator.SetBool("isDocking", false);
                 animator.SetBool("isJumping", true);
 
                 Jump();
             }
 
-            if (Input.GetButtonDown("Fire3"))
-            {
-                animator.SetBool("isDocking", true);
+            if (Input.GetButtonDown("Fire3") && !isDocking)
+            {                
                 StartCoroutine(Dock());
             }
         }
@@ -108,8 +108,12 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator Dock()
     {
+        animator.SetBool("isDocking", true);
+        speed *= 1.5f;
         yield return new WaitForSecondsRealtime(3.0f);
         animator.SetBool("isDocking", false);
+        speed = defaultSpeed;
+
     }
 
     void Move(float xMoveInput)

@@ -25,12 +25,6 @@ public class ObjectKiller : MonoBehaviour
             return;
         }
 
-        var player = other.gameObject.GetComponent<PlayerMovement>();
-        if (player != null)
-        {
-            SceneManager.LoadScene(0);
-        }
-
         Destroy(other.gameObject);
     }        
 }

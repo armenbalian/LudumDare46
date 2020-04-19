@@ -12,7 +12,7 @@ public class MapGenerator : MonoBehaviour
     GameObject enemyPrefab;
   
     int mapLenght = 1000;
-    int maxHoleLength = 4;
+    int maxHoleLength = 5;
 
     // Start is called before the first frame update
     void Awake()
@@ -27,9 +27,9 @@ public class MapGenerator : MonoBehaviour
 
             var gameObject = floorPossibilityPrefab[0];
 
-            var isHole = Random.Range(0, 10) == 0;
+            var isHole = Random.Range(0, 8) == 0;
 
-            if (safeZone || floorLenght < 3)
+            if (safeZone || floorLenght < 6)
             {
                 isHole = false;
             }
@@ -46,7 +46,7 @@ public class MapGenerator : MonoBehaviour
                 gameObject = floorPossibilityPrefab[1];
                 if (holeLenght == 0)
                 {
-                    holeLenght = Random.Range(2, maxHoleLength + 1);
+                    holeLenght = Random.Range(3, maxHoleLength + 1);
                 }
                 else
                 {
