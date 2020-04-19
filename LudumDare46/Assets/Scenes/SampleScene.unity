@@ -566,8 +566,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1108664610}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.29, y: 5.18, z: 0}
-  m_LocalScale: {x: 0.25943816, y: 0.25943816, z: 0.25943816}
+  m_LocalPosition: {x: -7.29, y: 7.57, z: 1}
+  m_LocalScale: {x: 0.26917014, y: 0.30112064, z: 0.26917014}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
@@ -748,10 +748,35 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 2115754508470292270, guid: 924a2ca33bd235e4392de9616e3634ec,
+        type: 3}
+      propertyPath: levels.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115754508470292270, guid: 924a2ca33bd235e4392de9616e3634ec,
+        type: 3}
+      propertyPath: levels.Array.data[0]
+      value: 
+      objectReference: {fileID: 1108664610}
     - target: {fileID: 4966828965511659272, guid: 924a2ca33bd235e4392de9616e3634ec,
         type: 3}
       propertyPath: orthographic
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4966828965511659272, guid: 924a2ca33bd235e4392de9616e3634ec,
+        type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.4988875
+      objectReference: {fileID: 0}
+    - target: {fileID: 4966828965511659272, guid: 924a2ca33bd235e4392de9616e3634ec,
+        type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.9489764
+      objectReference: {fileID: 0}
+    - target: {fileID: 4966828965511659272, guid: 924a2ca33bd235e4392de9616e3634ec,
+        type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.9528302
       objectReference: {fileID: 0}
     - target: {fileID: 4966828965511659275, guid: 924a2ca33bd235e4392de9616e3634ec,
         type: 3}
@@ -818,7 +843,8 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 5311731099230801956}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8223562944691603395, guid: 924a2ca33bd235e4392de9616e3634ec, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 924a2ca33bd235e4392de9616e3634ec, type: 3}
 --- !u!1001 &5311731099230801948
 PrefabInstance:
@@ -876,11 +902,6 @@ PrefabInstance:
         type: 3}
       propertyPath: player
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1061816920633939853, guid: 90d57320166e2c540a58478e8e40ae5a,
-        type: 3}
-      propertyPath: isRunning
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1176784804429493351, guid: 90d57320166e2c540a58478e8e40ae5a,
         type: 3}

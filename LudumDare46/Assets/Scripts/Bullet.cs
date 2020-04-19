@@ -10,6 +10,8 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     Rigidbody rb;
 
+    bool haveCollide = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,12 +20,13 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player" || haveCollide)
             return;
 
         Health health = other.GetComponent<Health>();
         if (health != null)
         {
+            haveCollide = true;
             health.TakeDamage(25, other.transform.position);
         }
 
