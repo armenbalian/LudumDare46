@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1332744469232928228}
   m_Layer: 0
   m_Name: ParticleSystemExplosion
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4823,6 +4823,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ExplosionDetection
+      objectReference: {fileID: 0}
+    - target: {fileID: 4767448044332407662, guid: 72561ff08d06ea9419c1b3a8b24a092b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6312038274582299385, guid: 72561ff08d06ea9419c1b3a8b24a092b,
         type: 3}
