@@ -7,6 +7,9 @@ public class PlayerHand : MonoBehaviour
     [SerializeField]
     Gun gun;
 
+    [SerializeField]
+    bool isPlayer = false;
+
     private void Awake()
     {
         if (gun == null)
@@ -17,8 +20,18 @@ public class PlayerHand : MonoBehaviour
     void Update()
     {
         var newPos = transform.position;
-        newPos.x += 0.2f;
-        newPos.y += 0.15f;
+
+        if (isPlayer)
+        {
+            newPos.x += 0.2f;
+            newPos.y += 0.15f;
+        }
+        else
+        {
+            newPos.x -= 0.2f;
+            newPos.y += 0.15f;
+        }
+
         gun.transform.position = newPos;
     }
 }

@@ -684,6 +684,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gun: {fileID: 0}
+  isPlayer: 0
 --- !u!1 &6261420999709149748
 GameObject:
   m_ObjectHideFlags: 0
