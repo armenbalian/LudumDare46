@@ -50,7 +50,7 @@ MonoBehaviour:
   grenade: {fileID: 0}
   target: {fileID: 7185796915738344697}
   h: 5
-  gravity: -18
+  gravity: -100
   debugPath: 0
 --- !u!23 &3875789441517329795
 MeshRenderer:

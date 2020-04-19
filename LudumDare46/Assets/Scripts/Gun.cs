@@ -63,7 +63,7 @@ public class Gun : MonoBehaviour
 
             if (healthSystem)
             {
-                healthSystem.TakeDamage(20, lastHitPoint);
+                healthSystem.TakeDamage(25, lastHitPoint);
             }
         }
     }
