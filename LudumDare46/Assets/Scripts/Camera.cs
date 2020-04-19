@@ -9,16 +9,13 @@ public class Camera : MonoBehaviour
 
     Vector3 offset;
 
-    [SerializeField]
-    private float smoothSpeed = 0.125f;
-
     void Awake()
-    {        
-        offset = transform.position - target.position;        
+    {
+        offset = transform.position - target.position;
     }
-    
+
     void LateUpdate()
     {
-        transform.position = new Vector3(target.position.x + offset.x, transform.position.y, transform.position.z);        
-    }   
+        transform.position = new Vector3(target.position.x + offset.x, transform.position.y, transform.position.z);
+    }
 }

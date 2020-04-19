@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    Animator animator;
+
     [SerializeField]
     bool isRunning = true;
 
@@ -27,6 +29,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
+        animator = GetComponentInChildren<Animator>();
+        if (animator == null)
+            throw new System.Exception("Player Movement - Need Animator");
+
         speed = defaultSpeed;
 
         controller = GetComponent<CharacterController>();
@@ -43,6 +49,14 @@ public class PlayerMovement : MonoBehaviour
     {
         isGrounded = groundSensor.GetIsTouchingGround();
 
+        var isJumping = animator.GetBool("isJumping");
+
+        if (isGrounded && isJumping)
+        {
+            animator.SetBool("isJumping", false);
+        }
+
+
         if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
@@ -56,8 +70,11 @@ public class PlayerMovement : MonoBehaviour
             Move(1.0f);
         }
         
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetButtonDown("Jump") && isGrounded && !isJumping)
         {
+            groundSensor.resetAllStatus();
+            animator.SetBool("isJumping", true);
+
             Jump();
         }
     }
@@ -69,11 +86,11 @@ public class PlayerMovement : MonoBehaviour
             Vector2 move = new Vector2(xMoveInput, 0.0f);
             controller.Move(move * speed * Time.deltaTime);
         }
-    }
+    }   
 
-    void Jump()
+    public void Jump()
     {
         velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         controller.Move(velocity * Time.deltaTime);
-    }
+    }    
 }

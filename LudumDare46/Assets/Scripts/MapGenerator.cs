@@ -57,6 +57,7 @@ public class MapGenerator : MonoBehaviour
                 floorLenght++;
             }
 
+            /*
             var haveEnemy = Random.Range(0, 15) == 0;
             if(haveEnemy && !isHole && !safeZone)
             {                
@@ -66,6 +67,7 @@ public class MapGenerator : MonoBehaviour
                     Instantiate(enemyPrefab, enemyPos, transform.rotation);
                 }                
             }
+            */
 
             gameObject.name = "Floor#" + i;
             Instantiate(gameObject, newPos, transform.rotation);

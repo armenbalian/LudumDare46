@@ -42,6 +42,14 @@ public class GroundSensor : MonoBehaviour
         return allGroundsStatus.Any(c => c.Value);
     }
 
+    public void resetAllStatus()
+    {
+        foreach (var key in allGroundsStatus.Keys.ToList())
+        {
+            allGroundsStatus[key] = false;
+        }
+    }
+
     void OnTriggerEnter(Collider other)
     {
         var gameObject = other.gameObject;
