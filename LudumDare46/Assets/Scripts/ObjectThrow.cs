@@ -48,7 +48,8 @@ public class ObjectThrow : MonoBehaviour
         if (!grenade.GetIsActive())
         {
             Vector3 newPos = playerTransform.position;
-            newPos.x++;
+            newPos.x += 0.5f;
+            newPos.y += 1.5f;
             transform.position = newPos;
             grenade.transform.position = newPos;
         }

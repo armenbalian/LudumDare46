@@ -59,11 +59,11 @@ public class Health : MonoBehaviour
         }
         else
         {
-            ShowFloatingText();
+            ShowFloatingText(amount);
         }
     }
 
-    void ShowFloatingText()
+    void ShowFloatingText(float damage)
     {
         if (!floatingTextPrefab && !IsDead())
         {
@@ -71,7 +71,7 @@ public class Health : MonoBehaviour
         }
 
         var gameObject = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity, transform);
-        gameObject.GetComponent<TextMesh>().text = currentHealth.ToString();
+        gameObject.GetComponent<TextMesh>().text = damage.ToString();
     }
 
     void Dead()

@@ -28,7 +28,7 @@ public class MapGenerator : MonoBehaviour
 
             var isHole = Random.Range(0, 10) == 0;
 
-            if (safeZone || floorLenght < 2)
+            if (safeZone || floorLenght < 3)
             {
                 isHole = false;
             }

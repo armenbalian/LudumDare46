@@ -8,6 +8,11 @@ public class Grenade : MonoBehaviour
     SphereCollider sphereCollider;
     MeshRenderer meshRenderer;
 
+    ExplosionDetection explosionDetection;
+
+    [SerializeField]
+    ParticleSystem particleSystemExplosion;
+
     bool isActive = false;
 
     private void Awake()
@@ -23,6 +28,13 @@ public class Grenade : MonoBehaviour
         meshRenderer = GetComponentInChildren<MeshRenderer>();
         if (meshRenderer == null)
             throw new System.Exception("Grenade - Need a Mesh Renderer !");
+
+        if (particleSystemExplosion == null)
+            throw new System.Exception("Grenade - Need a Particle System !");
+
+        explosionDetection = particleSystemExplosion.GetComponentInChildren<ExplosionDetection>();
+        if (explosionDetection == null)
+            throw new System.Exception("Grenade - Need a Explosion Detection !");
 
         meshRenderer.enabled = false;
         rigidbody.isKinematic = false;      
@@ -44,8 +56,13 @@ public class Grenade : MonoBehaviour
     {
         if (other.gameObject.tag != "Player")
         {
-            print("active false");
-            SetActive(false);
+            if (GetIsActive())
+            {
+                particleSystemExplosion.transform.position = gameObject.transform.position;
+                particleSystemExplosion.Play();
+
+                SetActive(false);
+            }
         }        
     }
 }

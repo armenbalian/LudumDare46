@@ -21,7 +21,6 @@ public class ObjectKiller : MonoBehaviour
         var grenade = other.gameObject.GetComponent<Grenade>();
         if (grenade != null)
         {
-            print("grenade skip");
             return;
         }
 
