@@ -57,7 +57,7 @@ public class MapGenerator : MonoBehaviour
             {
                 floorLenght++;
             }
-
+          
             GameObject enemyInstance = null;
             var haveEnemy = Random.Range(0, 15) == 0;
             if(haveEnemy && !isHole && !safeZone)
@@ -67,18 +67,18 @@ public class MapGenerator : MonoBehaviour
                     var enemyPos = new Vector3(newPos.x, newPos.y + 10, newPos.z);
                     enemyInstance = Instantiate(enemyPrefab, enemyPos, transform.rotation);
                 }                
-            }            
+            }                        
 
             gameObject.name = "Floor#" + i;
             var newInstance = Instantiate(gameObject, newPos, transform.rotation);
 
             if (i >= 80)
             {
-                GameObjectUtils.SetActive(newInstance, false);
+                GameObjectUtils.SetActive(newInstance, false);                
                 if (enemyInstance != null)
                 {
                     GameObjectUtils.SetActive(enemyInstance, false);
-                }
+                }                
             }
 
             newPos.x++;

@@ -47,21 +47,11 @@ public class GeneralMovement : MonoBehaviour
             }
         }
 
-        if (isWalking)
-        {
-            Move(-1.0f);
-        }
-
         velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
-    }
-
-    void Move(float xMoveInput)
-    {
-        if (xMoveInput != 0)
+        if (controller.enabled)
         {
-            Vector2 move = new Vector2(xMoveInput, 0.0f);
-            controller.Move(move * speed * Time.deltaTime);
+            controller.Move(velocity * Time.deltaTime);
         }
     }
+
 }

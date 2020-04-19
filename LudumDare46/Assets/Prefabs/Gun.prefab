@@ -32,6 +32,7 @@ Transform:
   - {fileID: 8901926590364906974}
   - {fileID: 5540924490895320906}
   - {fileID: 3214088407881049210}
+  - {fileID: 6009256819432968260}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -47,9 +48,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42997a6bbd56700428b0d043ebdb6cbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debug: 0
   bulletPrefab: {fileID: 6990370875475602893, guid: 260e255c0520ac04c87880af5bf5b67c,
     type: 3}
+  bulletSpawnPoint: {fileID: 6009256819432968260}
 --- !u!82 &2284469342624117917
 AudioSource:
   m_ObjectHideFlags: 0
@@ -302,6 +303,36 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &8604811953935070181
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6009256819432968260}
+  m_Layer: 0
+  m_Name: BulletSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6009256819432968260
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8604811953935070181}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.486, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2866333428171075895}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &6744003190079970616
 PrefabInstance:
   m_ObjectHideFlags: 0

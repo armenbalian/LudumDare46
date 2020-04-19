@@ -6,10 +6,13 @@ public class PlayerMovement : MonoBehaviour
 {
     Animator animator;
 
+    bool isRunning = false;
+
+    [SerializeField]
+    Health health;
+
     [SerializeField]
     bool debug = false;
-
-    bool isRunning = false;
 
     [SerializeField]
     float defaultSpeed = 3.0f;
@@ -45,6 +48,9 @@ public class PlayerMovement : MonoBehaviour
         if (groundSensor == null)
             throw new System.Exception("Player Movement - Need GroundSensor");
 
+        if (health == null)
+            throw new System.Exception("Player Movement - Need health");
+
         if (!debug)
         {
             StartCoroutine(StartRunning());
@@ -70,6 +76,7 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded && isJumping)
         {
             animator.SetBool("isJumping", false);
+            speed = defaultSpeed;
         }
 
 
@@ -91,10 +98,10 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Input.GetButtonDown("Jump"))
             {
-                groundSensor.resetAllStatus();
-                speed = defaultSpeed;
+                health.isInvincible = false;
                 animator.SetBool("isDocking", false);
                 animator.SetBool("isJumping", true);
+                groundSensor.resetAllStatus();
 
                 Jump();
             }
@@ -108,12 +115,17 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator Dock()
     {
+        health.isInvincible = true;
         animator.SetBool("isDocking", true);
         speed *= 1.5f;
         yield return new WaitForSecondsRealtime(3.0f);
-        animator.SetBool("isDocking", false);
-        speed = defaultSpeed;
 
+        if (animator.GetBool("isDocking"))
+        {
+            health.isInvincible = false;
+            speed = defaultSpeed;
+            animator.SetBool("isDocking", false);
+        }
     }
 
     void Move(float xMoveInput)

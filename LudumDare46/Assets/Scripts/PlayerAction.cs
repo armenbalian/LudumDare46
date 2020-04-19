@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerAction : MonoBehaviour
 {
     Gun gun;
 
-    ObjectThrow objectThrow; 
+    ObjectThrow objectThrow;
+
+    [SerializeField]
+    Health health;
 
     private void Awake()
     {
@@ -16,7 +20,11 @@ public class PlayerAction : MonoBehaviour
 
         objectThrow = FindObjectOfType<ObjectThrow>();
         if (objectThrow == null)
-            throw new System.Exception("Player Action - Need Object Throw !");
+            throw new System.Exception("Player Action - Need Object Throw !");   
+
+        if(health == null)
+            throw new System.Exception("Player Action - Need Health !");
+
     }
 
     // Start is called before the first frame update
@@ -28,14 +36,26 @@ public class PlayerAction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (!health.IsDead())
         {
-            gun.Shoot();
-        }
+            if (Input.GetButtonDown("Fire1"))
+            {
+                gun.Shoot(health.GetInstanceID());
+            }
 
-        if (Input.GetButtonDown("Fire2"))
-        {
-            objectThrow.Launch();
+            if (Input.GetButtonDown("Fire2"))
+            {
+                objectThrow.Launch();
+            }
         }
+        else
+        {
+            StartCoroutine(WaitBeforeRestart());
+        }
+    }
+    IEnumerator WaitBeforeRestart()
+    {
+        yield return new WaitForSecondsRealtime(1.0f);
+        SceneManager.LoadScene(0);
     }
 }

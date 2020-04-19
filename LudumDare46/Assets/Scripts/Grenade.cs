@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Grenade : MonoBehaviour
 {
-    Rigidbody rigidbody;
+    Rigidbody rb;
     SphereCollider sphereCollider;
     MeshRenderer[] meshRenderers;
 
@@ -17,8 +17,8 @@ public class Grenade : MonoBehaviour
 
     private void Awake()
     {
-        rigidbody = GetComponent<Rigidbody>();
-        if (rigidbody == null)
+        rb = GetComponent<Rigidbody>();
+        if (rb == null)
             throw new System.Exception("Grenade - Need a RigidBody !");
 
         sphereCollider = GetComponent<SphereCollider>();
@@ -41,13 +41,13 @@ public class Grenade : MonoBehaviour
             mesh.enabled = false;
         }
 
-        rigidbody.isKinematic = false;      
+        rb.isKinematic = false;      
     }
 
     public void SetActive(bool active)
     {
         isActive = active;
-        rigidbody.useGravity = active;
+        rb.useGravity = active;
         foreach (var mesh in meshRenderers)
         {
             mesh.enabled = active;

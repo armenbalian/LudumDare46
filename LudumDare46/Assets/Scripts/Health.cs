@@ -25,6 +25,7 @@ public class Health : MonoBehaviour
 
     Animator animator;
 
+    public bool isInvincible = false;
 
     void Awake()
     {
@@ -50,7 +51,9 @@ public class Health : MonoBehaviour
     
         if (audioSound)
         {
-            audioSound.Play();
+            bool randomSound = Random.Range(0, 6) == 0;
+            if(randomSound)
+                audioSound.Play();
         }
 
         currentHealth -= amount;

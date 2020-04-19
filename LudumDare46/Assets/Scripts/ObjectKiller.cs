@@ -17,8 +17,21 @@ public class ObjectKiller : MonoBehaviour
         
     }
 
+    IEnumerator WaitBeforeRestart()
+    {
+        yield return new WaitForSecondsRealtime(1.0f);
+        SceneManager.LoadScene(0);
+    }
+
     void OnTriggerEnter(Collider other)
-    {       
+    {
+        var isPlayer = other.gameObject.tag == "Player";
+        if (isPlayer)
+        {
+            StartCoroutine(WaitBeforeRestart());           
+            return;
+        }
+
         var grenade = other.gameObject.GetComponent<Grenade>();
         if (grenade != null)
         {

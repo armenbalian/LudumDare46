@@ -7,26 +7,39 @@ public class Gun : MonoBehaviour
     [SerializeField]
     GameObject bulletPrefab;
 
+    [SerializeField]
+    Transform bulletSpawnPoint;
+
     AudioSource audioSource;
-    ParticleSystem particleSystem;
+    ParticleSystem ps;
 
     private void Awake()
     {
-        particleSystem = GetComponentInChildren<ParticleSystem>();
-        if (!particleSystem)
+        ps = GetComponentInChildren<ParticleSystem>();
+        if (ps == null)
             throw new System.Exception("Gun - Need Particle System");
 
         audioSource = GetComponent<AudioSource>();
-        if(!audioSource)
+        if(audioSource == null)
             throw new System.Exception("Gun - Need Audio Source");
+    }
+
+    public void Update()
+    {
 
     }
 
-    public void Shoot()
+    public void Shoot(int OwnerId, float speedMultiplier = 1.0f)
     {
-        particleSystem.Play();
+        ps.Play();
         audioSource.Play();
 
-        Instantiate(bulletPrefab, transform.position, transform.rotation);
+        var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, transform.rotation);
+        var bulletScript = bullet.GetComponent<Bullet>();
+        if (bulletScript != null)
+        {          
+            bulletScript.SetOwner(OwnerId);
+            bulletScript.SetSpeedMultiplier(speedMultiplier);
+        }        
     }
 }
