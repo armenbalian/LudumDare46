@@ -27,7 +27,7 @@ public class Bullet : MonoBehaviour
         if (health != null)
         {
             haveCollide = true;
-            health.TakeDamage(25, other.transform.position);
+            health.TakeDamage(Random.Range(30, 60), other.transform.position);
         }
 
         Destroy(gameObject);

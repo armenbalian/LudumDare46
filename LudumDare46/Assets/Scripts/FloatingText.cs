@@ -7,7 +7,7 @@ public class FloatingText : MonoBehaviour
     [SerializeField]
     private float destroyTime = 3f;
 
-    private Vector3 offset = new Vector3(0, 0.8f, 0);
+    private Vector3 offset = new Vector3(0, 2f, 0);
 
     private Vector3 RandomizeIntensity = new Vector3(0.5f, 0, 0);
 

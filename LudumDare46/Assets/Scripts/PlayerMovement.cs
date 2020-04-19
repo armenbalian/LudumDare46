@@ -7,7 +7,9 @@ public class PlayerMovement : MonoBehaviour
     Animator animator;
 
     [SerializeField]
-    bool isRunning = true;
+    bool debug = false;
+
+    bool isRunning = false;
 
     [SerializeField]
     float defaultSpeed = 3.0f;
@@ -42,6 +44,19 @@ public class PlayerMovement : MonoBehaviour
         groundSensor = GetComponentInChildren<GroundSensor>();
         if (groundSensor == null)
             throw new System.Exception("Player Movement - Need GroundSensor");
+
+        if (!debug)
+        {
+            StartCoroutine(StartRunning());
+        }
+    }
+
+    IEnumerator StartRunning()
+    {
+        animator.SetBool("isRunning", false);
+        yield return new WaitForSecondsRealtime(3.0f);
+        animator.SetBool("isRunning", true);
+        isRunning = true;
     }
 
     // Update is called once per frame
@@ -50,6 +65,7 @@ public class PlayerMovement : MonoBehaviour
         isGrounded = groundSensor.GetIsTouchingGround();
 
         var isJumping = animator.GetBool("isJumping");
+        var isDocking = animator.GetBool("isDocking");
 
         if (isGrounded && isJumping)
         {

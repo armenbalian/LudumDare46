@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ObjectKiller : MonoBehaviour
 {
@@ -22,6 +23,12 @@ public class ObjectKiller : MonoBehaviour
         if (grenade != null)
         {
             return;
+        }
+
+        var player = other.gameObject.GetComponent<PlayerMovement>();
+        if (player != null)
+        {
+            SceneManager.LoadScene(0);
         }
 
         Destroy(other.gameObject);
