@@ -44,25 +44,6 @@ public class PlayerMovement : MonoBehaviour
             throw new System.Exception("Player Movement - Need GroundSensor");
     }
 
-    void Start()
-    {
-        /*
-        var animator = GetComponent<Animator>();
-        if (animator != null)
-        {
-            animator.enabled = false;
-        }
-        else
-        {
-            var animators = GetComponentsInChildren<Animator>();
-            foreach (var anim in animators)
-            {
-                anim.enabled = false;
-            }
-        }
-        */
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -88,14 +69,31 @@ public class PlayerMovement : MonoBehaviour
         {
             Move(1.0f);
         }
-        
-        if (Input.GetButtonDown("Jump") && isGrounded && !isJumping)
-        {
-            groundSensor.resetAllStatus();
-            animator.SetBool("isJumping", true);
 
-            Jump();
+
+        if (isGrounded && !isJumping)
+        {
+            if (Input.GetButtonDown("Jump"))
+            {
+                groundSensor.resetAllStatus();
+                animator.SetBool("isDocking", false);
+                animator.SetBool("isJumping", true);
+
+                Jump();
+            }
+
+            if (Input.GetButtonDown("Fire3"))
+            {
+                animator.SetBool("isDocking", true);
+                StartCoroutine(Dock());
+            }
         }
+    }
+
+    IEnumerator Dock()
+    {
+        yield return new WaitForSecondsRealtime(3.0f);
+        animator.SetBool("isDocking", false);
     }
 
     void Move(float xMoveInput)
@@ -107,7 +105,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }   
 
-    public void Jump()
+    void Jump()
     {
         velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         controller.Move(velocity * Time.deltaTime);

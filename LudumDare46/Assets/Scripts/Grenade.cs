@@ -6,7 +6,7 @@ public class Grenade : MonoBehaviour
 {
     Rigidbody rigidbody;
     SphereCollider sphereCollider;
-    MeshRenderer meshRenderer;
+    MeshRenderer[] meshRenderers;
 
     ExplosionDetection explosionDetection;
 
@@ -25,8 +25,8 @@ public class Grenade : MonoBehaviour
         if (sphereCollider == null)
             throw new System.Exception("Grenade - Need a sphere collider !");
 
-        meshRenderer = GetComponentInChildren<MeshRenderer>();
-        if (meshRenderer == null)
+        meshRenderers = GetComponentsInChildren<MeshRenderer>();
+        if (meshRenderers.Length == 0)
             throw new System.Exception("Grenade - Need a Mesh Renderer !");
 
         if (particleSystemExplosion == null)
@@ -36,7 +36,11 @@ public class Grenade : MonoBehaviour
         if (explosionDetection == null)
             throw new System.Exception("Grenade - Need a Explosion Detection !");
 
-        meshRenderer.enabled = false;
+        foreach (var mesh in meshRenderers)
+        {
+            mesh.enabled = false;
+        }
+
         rigidbody.isKinematic = false;      
     }
 
@@ -44,9 +48,12 @@ public class Grenade : MonoBehaviour
     {
         isActive = active;
         rigidbody.useGravity = active;
-        meshRenderer.enabled = active;
+        foreach (var mesh in meshRenderers)
+        {
+            mesh.enabled = active;
+        }
     }
-
+    
     public bool GetIsActive()
     {
         return isActive;

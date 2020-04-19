@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
     Animator animator;
 
-    void Awake()
+    void Start()
     {
         animator = GetComponentInChildren<Animator>();
         if (animator != null)
@@ -14,11 +14,5 @@ public class Enemy : MonoBehaviour
             animator.SetBool("isJumping", false);
             animator.SetBool("isRunning", false);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

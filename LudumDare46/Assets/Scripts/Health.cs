@@ -1,29 +1,38 @@
-﻿using System.Collections;
+﻿using Assets.Scripts;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Health : MonoBehaviour
 {
     [SerializeField]
-    private GameObject floatingTextPrefab;
+    GameObject floatingTextPrefab;
 
     [SerializeField]
-    private ParticleSystem hitParticle;
+    ParticleSystem hitParticle;
 
     [SerializeField]
-    private ParticleSystem DeadParticle;
-
-    private AudioSource audioSound;
+    ParticleSystem DeadParticle;
+    
 
     [SerializeField]
-    private int maxHealth;
+    AudioSource audioSound;
 
-    private int currentHealth;
+    [SerializeField]
+    int maxHealth;
 
-    private void Awake()
+    int currentHealth;
+
+    Animator animator;
+
+
+    void Awake()
     {
         currentHealth = maxHealth;
-        audioSound = GetComponent<AudioSource>();
+
+        animator = GetComponentInChildren<Animator>();
+        if (animator == null)
+            throw new System.Exception("Health - Need a animator !");
     }
 
     // Update is called once per frame
@@ -53,13 +62,11 @@ public class Health : MonoBehaviour
             hitParticle.Play();
         }
 
+        ShowFloatingText(amount);
+
         if (IsDead())
         {
             Dead();
-        }
-        else
-        {
-            ShowFloatingText(amount);
         }
     }
 
@@ -75,37 +82,26 @@ public class Health : MonoBehaviour
     }
 
     void Dead()
+    {                
+        DeadParticle.Play();
+
+        animator.SetBool("isDying", true);
+
+        StartCoroutine(KillerAndDestroy());
+    }
+
+    IEnumerator KillerAndDestroy()
     {
-        if (DeadParticle)
-        {
-            DeadParticle.Play();
-        }
+        RemoveColliderAndController();
 
-        MakeInvisible();
+        yield return new WaitForSeconds(2.0f);
 
+        //MakeInvisible();
         Destroy(gameObject, 1.0f);
     }
 
-    void MakeInvisible()
+    void RemoveColliderAndController()
     {
-        gameObject.layer = 0;
-
-        var meshRenderer = GetComponent<MeshRenderer>();
-        if (meshRenderer)
-        {
-            meshRenderer.enabled = false;
-        }
-
-        var gun = GetComponentInChildren<Gun>();
-        if (gun)
-        {
-            var gunMeshRenderers = gun.GetComponentsInChildren<MeshRenderer>();
-            foreach(var renderer in gunMeshRenderers)
-            {
-                renderer.enabled = false;
-            }
-        }
-
         var boxCollider = GetComponent<BoxCollider>();
         if (boxCollider)
         {
@@ -119,7 +115,12 @@ public class Health : MonoBehaviour
         }
     }
 
-    bool IsDead()
+    void MakeInvisible()
+    {
+        GameObjectUtils.SetActive(gameObject, false);
+    }
+
+    public bool IsDead()
     {
         return currentHealth <= 0;
     }
