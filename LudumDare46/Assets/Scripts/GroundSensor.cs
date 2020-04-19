@@ -34,7 +34,10 @@ public class GroundSensor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        if (meshRenderer.enabled)
+        {
+            meshRenderer.enabled = false;
+        }
     }
 
     public bool GetIsTouchingGround()

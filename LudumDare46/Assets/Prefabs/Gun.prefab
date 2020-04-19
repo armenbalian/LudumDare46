@@ -47,6 +47,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42997a6bbd56700428b0d043ebdb6cbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debug: 0
+  bulletPrefab: {fileID: 6990370875475602893, guid: 260e255c0520ac04c87880af5bf5b67c,
+    type: 3}
 --- !u!82 &2284469342624117917
 AudioSource:
   m_ObjectHideFlags: 0
@@ -200,7 +203,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d752995ec18daa94388e1355fc788cdd, type: 2}
+  - {fileID: 2100000, guid: 0c30fa0dd331d534d95f7ba6663beb2c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -278,7 +281,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d752995ec18daa94388e1355fc788cdd, type: 2}
+  - {fileID: 2100000, guid: 0c30fa0dd331d534d95f7ba6663beb2c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

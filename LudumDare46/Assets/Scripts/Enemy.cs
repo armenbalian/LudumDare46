@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    Animator animator;
+
+    void Awake()
     {
-        
+        animator = GetComponentInChildren<Animator>();
+        if (animator != null)
+        {
+            animator.SetBool("isJumping", false);
+            animator.SetBool("isRunning", false);
+        }
     }
 
     // Update is called once per frame
