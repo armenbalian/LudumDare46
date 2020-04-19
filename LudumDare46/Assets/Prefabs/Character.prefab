@@ -649,6 +649,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1959443440615758598}
+  - component: {fileID: 1724198879938759839}
   m_Layer: 0
   m_Name: RightArmTarget
   m_TagString: Untagged
@@ -670,6 +671,18 @@ Transform:
   m_Father: {fileID: 9169880520384916034}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1724198879938759839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6234268256266368056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f477dbfae1cac8c47863a4a33a0ae1f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6261420999709149748
 GameObject:
   m_ObjectHideFlags: 0
