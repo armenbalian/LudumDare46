@@ -217,6 +217,7 @@ MonoBehaviour:
   DeadParticle: {fileID: 3202714943021853803}
   audioSound: {fileID: 4868123386047660328}
   maxHealth: 100
+  isInvincible: 0
 --- !u!114 &2865508831934208571
 MonoBehaviour:
   m_ObjectHideFlags: 0

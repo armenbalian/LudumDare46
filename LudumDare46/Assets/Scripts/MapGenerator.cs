@@ -59,7 +59,8 @@ public class MapGenerator : MonoBehaviour
             }
           
             GameObject enemyInstance = null;
-            var haveEnemy = Random.Range(0, 15) == 0;
+            //var haveEnemy = Random.Range(0, 15) == 0;
+            var haveEnemy = false;
             if(haveEnemy && !isHole && !safeZone)
             {                
                 if (enemyPrefab)
@@ -67,17 +68,25 @@ public class MapGenerator : MonoBehaviour
                     var enemyPos = new Vector3(newPos.x, newPos.y + 10, newPos.z);
                     enemyInstance = Instantiate(enemyPrefab, enemyPos, transform.rotation);
                 }                
-            }                        
+            }
+
+            if (i == mapLenght)
+            {
+                var posPlant = newPos;
+                posPlant.y++;
+                var newPlantInstance = Instantiate(floorPossibilityPrefab[2], posPlant, transform.rotation);
+                //GameObjectUtils.SetActive(newPlantInstance, false);
+            }
 
             gameObject.name = "Floor#" + i;
             var newInstance = Instantiate(gameObject, newPos, transform.rotation);
 
             if (i >= 80)
             {
-                GameObjectUtils.SetActive(newInstance, false);                
+                //GameObjectUtils.SetActive(newInstance, false);                
                 if (enemyInstance != null)
                 {
-                    GameObjectUtils.SetActive(enemyInstance, false);
+                    //GameObjectUtils.SetActive(enemyInstance, false);
                 }                
             }
 

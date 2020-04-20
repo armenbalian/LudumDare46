@@ -34,13 +34,5 @@ public class ExplosionDetection : MonoBehaviour
         var health = other.gameObject.GetComponent<Health>();
         if (health == null)
             return;
-
-        /*
-        var instanceId = health.GetInstanceID().ToString();
-        if (objectsInRange.ContainsKey(instanceId))
-        {
-            objectsInRange.Remove(instanceId);
-        }
-        */
     }
 }

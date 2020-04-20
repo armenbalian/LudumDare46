@@ -53,6 +53,7 @@ public class PlayerAction : MonoBehaviour
             StartCoroutine(WaitBeforeRestart());
         }
     }
+
     IEnumerator WaitBeforeRestart()
     {
         yield return new WaitForSecondsRealtime(1.0f);

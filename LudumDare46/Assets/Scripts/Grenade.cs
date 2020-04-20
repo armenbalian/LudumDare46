@@ -10,6 +10,8 @@ public class Grenade : MonoBehaviour
 
     ExplosionDetection explosionDetection;
 
+    AudioSource audioSource;
+
     [SerializeField]
     ParticleSystem particleSystemExplosion;
 
@@ -35,6 +37,10 @@ public class Grenade : MonoBehaviour
         explosionDetection = particleSystemExplosion.GetComponentInChildren<ExplosionDetection>();
         if (explosionDetection == null)
             throw new System.Exception("Grenade - Need a Explosion Detection !");
+
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+            throw new System.Exception("Grenade - Need Audio Source");
 
         foreach (var mesh in meshRenderers)
         {
@@ -67,6 +73,8 @@ public class Grenade : MonoBehaviour
             {
                 particleSystemExplosion.transform.position = gameObject.transform.position;
                 particleSystemExplosion.Play();
+
+                audioSource.Play();
 
                 SetActive(false);
             }

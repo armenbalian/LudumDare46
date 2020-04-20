@@ -33,18 +33,18 @@ public class EnemyAction : MonoBehaviour
     }
 
     void Update()
-    {
+    {        
         if (!health.IsDead())
         {
             EnemyGunLogic();
-        }
+        }        
     }
 
     public void EnemyGunLogic()
     {
         if (IfPlayerInRange())
         {
-            var shouldIShoot = Random.Range(0, 50) == 0;
+            var shouldIShoot = Random.Range(0, 30) == 0;
             if (shouldIShoot)
             {
                 gun.Shoot(health.GetInstanceID(), 0.05f);
