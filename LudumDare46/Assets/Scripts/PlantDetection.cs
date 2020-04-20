@@ -19,7 +19,6 @@ public class PlantDetection : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        print(other.name);
         if (other.gameObject.name == "Player")
         {
             SceneManager.LoadScene(0);

@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1588701040260523367}
+  - component: {fileID: 1218161431864505484}
+  - component: {fileID: 5211580290622850913}
   m_Layer: 0
   m_Name: PlantFloor
   m_TagString: Untagged
@@ -32,6 +34,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1218161431864505484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1588701040260523364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b08e89daff08cc4ca4c82756639d367, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &5211580290622850913
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1588701040260523364}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.0400686, y: 2.9947085, z: 1}
+  m_Center: {x: -0.019865394, y: 0.99735427, z: 0}
 --- !u!1001 &1588701039809928359
 PrefabInstance:
   m_ObjectHideFlags: 0
