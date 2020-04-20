@@ -37,20 +37,25 @@ public class Bullet : MonoBehaviour
     {
         if (haveCollide)
             return;
-
+        
         Health health = other.GetComponent<Health>();
         if (health != null)
         {
             if (ownerId == health.GetInstanceID())
                 return;
 
-            haveCollide = true;
-
             if (!health.isInvincible)
             {
+                haveCollide = true;
                 health.TakeDamage(Random.Range(30, 60), other.transform.position);
                 Destroy(gameObject);
             }
+        }
+
+        var bullet = other.gameObject.GetComponent<Bullet>();
+        if (bullet != null)
+        {
+            Destroy(gameObject);
         }
 
         var objectSpawner = other.gameObject.GetComponent<ObjectSpawner>();

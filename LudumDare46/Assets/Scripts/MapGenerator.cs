@@ -11,7 +11,7 @@ public class MapGenerator : MonoBehaviour
     [SerializeField]
     GameObject enemyPrefab;
   
-    int mapLenght = 1000;
+    int mapLenght = 150;
     int maxHoleLength = 5;
 
     // Start is called before the first frame update
@@ -73,8 +73,7 @@ public class MapGenerator : MonoBehaviour
             {
                 var posPlant = newPos;
                 posPlant.y++;
-                var newPlantInstance = Instantiate(floorPossibilityPrefab[2], posPlant, transform.rotation);
-                GameObjectUtils.SetActive(newPlantInstance, false);
+                Instantiate(floorPossibilityPrefab[2], posPlant, transform.rotation);                
             }
 
             gameObject.name = "Floor#" + i;
