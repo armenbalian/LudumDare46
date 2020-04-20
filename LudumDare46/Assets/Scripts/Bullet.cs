@@ -37,7 +37,8 @@ public class Bullet : MonoBehaviour
     {
         if (haveCollide)
             return;
-        
+
+
         Health health = other.GetComponent<Health>();
         if (health != null)
         {
@@ -56,6 +57,7 @@ public class Bullet : MonoBehaviour
         if (bullet != null)
         {
             Destroy(gameObject);
+            Destroy(other.gameObject);  
         }
 
         var objectSpawner = other.gameObject.GetComponent<ObjectSpawner>();

@@ -86,7 +86,10 @@ public class PlayerMovement : MonoBehaviour
         }
 
         velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
+        if (controller.enabled)
+        {
+            controller.Move(velocity * Time.deltaTime);
+        }
 
         if (isRunning)
         {
@@ -133,7 +136,10 @@ public class PlayerMovement : MonoBehaviour
         if (xMoveInput != 0)
         {
             Vector2 move = new Vector2(xMoveInput, 0.0f);
-            controller.Move(move * speed * Time.deltaTime);
+            if (controller.enabled)
+            {
+                controller.Move(move * speed * Time.deltaTime);
+            }
         }
     }   
 
