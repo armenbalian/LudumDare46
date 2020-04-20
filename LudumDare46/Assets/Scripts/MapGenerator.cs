@@ -11,7 +11,7 @@ public class MapGenerator : MonoBehaviour
     [SerializeField]
     GameObject enemyPrefab;
   
-    int mapLenght = 150;
+    int mapLenght = 500;
     int maxHoleLength = 5;
 
     // Start is called before the first frame update

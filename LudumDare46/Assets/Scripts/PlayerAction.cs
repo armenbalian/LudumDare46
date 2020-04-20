@@ -47,6 +47,11 @@ public class PlayerAction : MonoBehaviour
             {
                 objectThrow.Launch();
             }
+
+            if (Input.GetKeyDown("r")) // Need a button eventualy
+            {
+                gun.Reload();
+            }
         }
         else
         {

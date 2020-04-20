@@ -60,8 +60,6 @@ public class Health : MonoBehaviour
 
         if (hitParticle)
         {
-            //hitParticle.transform.position = hitPoint;
-            //hitParticle.transform.position += new Vector3(0.8f, 1f, 0f);
             hitParticle.Play();
         }
 
