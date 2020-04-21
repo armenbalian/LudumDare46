@@ -51,7 +51,7 @@ public class Health : MonoBehaviour
     
         if (audioSound)
         {
-            bool randomSound = Random.Range(0, 6) == 0;
+            bool randomSound = Random.Range(0, 4) == 0;
             if(randomSound)
                 audioSound.Play();
         }

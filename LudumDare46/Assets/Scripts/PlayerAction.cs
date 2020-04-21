@@ -24,7 +24,6 @@ public class PlayerAction : MonoBehaviour
 
         if(health == null)
             throw new System.Exception("Player Action - Need Health !");
-
     }
 
     // Start is called before the first frame update

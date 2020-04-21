@@ -8,7 +8,10 @@ public class BulletInventory : MonoBehaviour
     [SerializeField]
     List<SpriteRenderer> bullets;
 
-    private bool isReloading = false;
+    bool isReloading = false;
+
+    [SerializeField]
+    Animator anim;
 
     void Awake()
     {
@@ -16,6 +19,14 @@ public class BulletInventory : MonoBehaviour
         {
             throw new System.Exception("BulletInventory - dont have bullets.");
         }
+
+        if (anim == null)
+            throw new System.Exception("BulletInventory - Need Animator !");
+    }
+
+    public bool IsReloading()
+    {
+        return isReloading;
     }
 
     public void TriggerReload()
@@ -26,6 +37,7 @@ public class BulletInventory : MonoBehaviour
     IEnumerator Reloading()
     {
         isReloading = true;
+        StartReloadingAnimation(true);
         var bulletToReload = bullets.Where(b => !b.enabled).ToList();
         for (var i = bulletToReload.Count - 1; i >= 0; i --)
         {
@@ -33,6 +45,20 @@ public class BulletInventory : MonoBehaviour
             bulletToReload[i].enabled = true;
         }
         isReloading = false;
+    }
+
+    void StartReloadingAnimation(bool start)
+    {
+        if (start)
+        {
+            anim.SetLayerWeight(1, 1);
+            anim.SetBool("isReloading", true);
+        }
+        else
+        {
+            anim.SetLayerWeight(1, 0);
+            anim.SetBool("isReloading", false);
+        }
     }
 
     public bool ConsumeBullet()

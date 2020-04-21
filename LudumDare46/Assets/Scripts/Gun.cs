@@ -56,8 +56,11 @@ public class Gun : MonoBehaviour
     {
         if(bulletInventory != null)
         {
-            asGunReload.Play();
-            bulletInventory.TriggerReload();
+            if (!bulletInventory.IsReloading())
+            {
+                asGunReload.Play();
+                bulletInventory.TriggerReload();
+            }
         }
     }
 

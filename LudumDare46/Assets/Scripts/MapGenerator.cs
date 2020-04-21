@@ -12,7 +12,7 @@ public class MapGenerator : MonoBehaviour
     GameObject enemyPrefab;
   
     int mapLenght = 500;
-    int maxHoleLength = 5;
+    int maxHoleLength = 4;
 
     // Start is called before the first frame update
     void Awake()

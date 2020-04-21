@@ -565,6 +565,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31e59a5bb02f97c4bb480fd7d19f8a0c, type: 3}
+--- !u!95 &418467112 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6210201249302145165, guid: 90d57320166e2c540a58478e8e40ae5a,
+    type: 3}
+  m_PrefabInstance: {fileID: 5311731099230801948}
+  m_PrefabAsset: {fileID: 0}
 --- !u!198 &838432291 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 6486657302329567241, guid: 31e59a5bb02f97c4bb480fd7d19f8a0c,
@@ -1229,6 +1235,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8622403786179532243, guid: 90d57320166e2c540a58478e8e40ae5a,
+        type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 418467112}
     - target: {fileID: 9009552630513646030, guid: 90d57320166e2c540a58478e8e40ae5a,
         type: 3}
       propertyPath: m_LocalRotation.z
